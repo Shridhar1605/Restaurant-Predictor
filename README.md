@@ -53,19 +53,20 @@ Restaurant_Predictor/
 
 ```bash
 pip install fastapi uvicorn pandas scikit-learn tensorflow
-
+```
 ---
 
 ###▶️ Run the API
-bash
+```bash
 Copy code
 cd app
 uvicorn main:app --reload
-🌐 Use the Frontend
+```
+### 🌐 Use the Frontend
 Open frontend/index.html in a browser.
 Paste the sample_input.txt data into the form and click Predict.
-
-📈 Model Details
+---
+## 📈 Model Details
 - Input: 21-day sliding window of historical features
 
 - Output: Predicted visitor count
@@ -74,7 +75,9 @@ Paste the sample_input.txt data into the form and click Predict.
 
 - R² Score: 79.9%
 
-📌 To-Do / Improvements
+---
+
+## 📌 To-Do / Improvements
 - Add support for user-uploaded CSV
 
 - Deploy API to a cloud platform (Render / Hugging Face Spaces)
