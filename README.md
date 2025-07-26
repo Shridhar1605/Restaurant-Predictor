@@ -13,7 +13,7 @@ This project predicts the number of visitors to a restaurant based on historical
 - **Frontend**: HTML, CSS  
 - **Backend**: FastAPI (Python)  
 - **ML Model**: LSTM (Keras + TensorFlow)  
-- **Data**: Historical air reservation data  
+- **Data**: Historical reservation data  
 
 ---
 
