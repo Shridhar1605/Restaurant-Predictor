@@ -1,0 +1,84 @@
+/* Import luxury-inspired serif font */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: url('https://images.unsplash.com/photo-1567745219000-b99afacf5ef6?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center fixed;
+    background-size: cover;
+    margin: 0;
+    padding: 40px 20px;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 40px;
+    border-radius: 12px;
+    max-width: 600px;
+    width: 100%;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5em;
+  color: #222;
+  text-align: center;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+}
+
+p {
+  text-align: center;
+  color: #555;
+  font-size: 1em;
+  margin-bottom: 30px;
+}
+
+label {
+  font-weight: 600;
+  display: block;
+  margin-top: 20px;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+textarea, input[type="date"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-family: 'Inter', sans-serif;
+  font-size: 1em;
+  box-sizing: border-box;
+}
+
+button {
+  margin-top: 20px;
+  margin-left: 43%;
+  padding: 10px 20px;
+  font-size: 1em;
+  font-weight: 600;
+  color: #fff;
+  background-color: #222;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #444;
+}
+
+#result {
+  margin-top: 30px;
+  font-size: 1.2em;
+  font-weight: 600;
+  text-align: center;
+  color: #111;
+}

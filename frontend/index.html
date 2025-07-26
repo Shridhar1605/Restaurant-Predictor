@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Restaurant Visitor Predictor</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>DineCast</h2>
+        <p>
+          This dashboard forecasts daily visitor trends for cafés and fine dining spaces.
+          Powered by a learning model trained on past reservation data, it helps you plan ahead with clarity and precision.
+          <br><br>
+          Effortless insights. Better service. Smarter operations.
+        </p>
+    
+        <label for="startDate">Select a Start Date (at least 21 days before today):</label><br>
+        <input type="date" id="startDate"><br><br>
+    
+        <label for="visitors">Reserve Visitors for 21 Days (one per line):</label><br>
+        <textarea id="visitors" rows="10" cols="30" placeholder="Enter 21 visitor counts..."></textarea><br><br>
+    
+        <button onclick="sendData()">Predict</button>
+    
+        <h3 id="result"></h3>
+    </div>
+    <script>
+        function generateNext21Dates(start) {
+          const dates = [];
+          const startDate = new Date(start);
+      
+          for (let i = 0; i < 21; i++) {
+            const date = new Date(startDate);
+            date.setDate(startDate.getDate() + i);
+            dates.push(date.toISOString().split('T')[0]);
+          }
+      
+          return dates;
+        }
+      
+        function isValidStartDate(start) {
+          const selectedDate = new Date(start);
+          const today = new Date();
+          const daysBeforeToday = (today - selectedDate) / (1000 * 60 * 60 * 24);
+          return daysBeforeToday >= 21;
+        }
+      
+        async function sendData() {
+          const startDate = document.getElementById('startDate').value;
+          const visitorLines = document.getElementById('visitors').value.trim().split('\n');
+      
+          if (!startDate) {
+            document.getElementById('result').innerText = "Please select a start date.";
+            return;
+          }
+      
+          if (!isValidStartDate(startDate)) {
+            document.getElementById('result').innerText = "Start date must be at least 21 days before today.";
+            return;
+          }
+      
+          const dateLines = generateNext21Dates(startDate);
+      
+          if (visitorLines.length !== 21) {
+            document.getElementById('result').innerText =
+              `Please enter exactly 21 visitor values (you entered ${visitorLines.length}).`;
+            return;
+          }
+      
+          const reserveVisitors = visitorLines.map(v => parseInt(v));
+          const payload = {
+            visit_datetime: dateLines,
+            reserve_visitors: reserveVisitors
+          };
+      
+          try {
+            const response = await fetch('http://127.0.0.1:8000/predict', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(payload)
+            });
+      
+            const data = await response.json();
+            document.getElementById('result').innerText =
+              "Predicted Visitors: " + data.predictions.join(', ');
+          } catch (error) {
+            console.error(error);
+            document.getElementById('result').innerText = "Error: Could not connect to API.";
+          }
+        }
+      </script>
+        
+</body>
+</html>
