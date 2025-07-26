@@ -27,7 +27,7 @@ This project predicts the number of visitors to a restaurant based on historical
 ---
 
 ## 📁 Folder Structure
-
+```
 Restaurant_Predictor/
 ├── app/ # FastAPI backend
 │ ├── main.py
@@ -43,7 +43,7 @@ Restaurant_Predictor/
 │ ├── index.html
 │ └── style.css
 ├── README.md
-
+```
 
 ---
 
@@ -56,7 +56,7 @@ pip install fastapi uvicorn pandas scikit-learn tensorflow
 ```
 ---
 
-###▶️ Run the API
+### ▶️ Run the API
 ```bash
 Copy code
 cd app
